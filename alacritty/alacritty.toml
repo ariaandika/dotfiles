@@ -1,0 +1,49 @@
+
+# import = ["<string>"]
+# live_config_reload = true | false
+
+[window]
+decorations = "None"
+# blur = true
+opacity = 0.96
+dynamic_title = false
+
+[font]
+normal = { family = "DejaVuSansM Nerd Font Mono", style = "bold" }
+
+# アニメ「かぐや様は告らせたい-ウルトラロマンティック-」OP主題歌
+# 
+#   
+# 🚫🚫🚫
+
+size = 11
+builtin_box_drawing = true
+
+[colors]
+draw_bold_text_with_bright_colors = false
+transparent_background_colors = false
+
+[colors.primary]
+# background = '#111129'
+# foreground = '#abb2bf'
+
+[colors.normal]
+black   = '#5c6370'
+red     = '#e06c75'
+green   = '#98c379'
+yellow  = '#e5c07b'
+blue    = '#61afef'
+magenta = '#c678dd'
+cyan    = '#56b6c2'
+white   = '#abb2bf'
+
+[colors.bright]
+black   = '#5c6370'
+red     = '#be5046'
+green   = '#98c379'
+yellow  = '#d19a66'
+blue    = '#61afef'
+magenta = '#c678dd'
+cyan    = '#56b6c2'
+white   = '#e6efff'
+

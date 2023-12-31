@@ -1,0 +1,104 @@
+{
+    "layer": "top", // window layer
+    "position": "bottom", // (top|bottom|left|right)
+    // "height": 1,
+    // "width": 800,
+    "spacing": 4, // Gaps between modules (4px)
+
+    // "start_hidden": true,
+    // "modifier-reset": "release",
+
+    // (dock, hide, invisible, overlay)
+    // to swap "hide" or "invisible", use IPC
+    "mode": "overlay",
+    // "exclusive": false, // false if mode overlay
+    // "passthrough": false, // true if mode overlay
+
+    // "modules-left": [],
+    // "modules-center": [],
+
+    "modules-right": [
+      "hyprland/workspaces",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "battery",
+      "clock"
+    ],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        // "all-outputs": true,
+        // "active-only": true,
+        "warp-on-scroll": false,
+        "format": "{name}: {windows}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        },
+        "window-rewrite-default": "",
+        "window-rewrite": {
+          "title<.*youtube.*>": "",
+          "class<opera>": "",
+          "title<.*google.*>": "",
+          "title<.*github.*>": "",
+          "class<alacritty>": "",
+          "code": "󰨞",
+        },
+    },
+    "clock": {
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "format": "{:%H:%M}",
+      "format-alt": "{:%d-%m-%Y}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}
+

@@ -1,0 +1,223 @@
+set $mod Mod4
+# font pango:monospace 8
+# font pango:DejaVu Sans Mono 8
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym $mod+m exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Return exec tmux neww
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+q mode "$mode_system"
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+r mode "resize"
+
+bindsym $mod+a exec $HOME/dev/scripts/screenshot
+bindsym $mod+s sticky toggle
+bindsym $mod+d exec --no-startup-id dmenu_run -b
+bindsym $mod+f fullscreen toggle
+bindsym $mod+x exec --no-startup-id $i3lockwall
+
+bindsym $mod+n border none
+bindsym $mod+b border normal
+
+# XF86MonBrightnessdown
+bindsym $mod+p exec echo $(( $( cat /sys/class/backlight/amdgpu_bl1/brightness ) + 3 )) > /sys/class/backlight/amdgpu_bl1/brightness
+bindsym $mod+o exec echo $(( $( cat /sys/class/backlight/amdgpu_bl1/brightness ) - 3 )) > /sys/class/backlight/amdgpu_bl1/brightness
+
+# free
+# win z
+# win c
+# win v
+
+bindsym $mod+Shift+h split h
+bindsym $mod+Shift+v split v
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+a focus parent
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+d focus child
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+Ctrl+1 exec --no-startup-id feh --no-fehbg --bg-fill $( cat ~/projects/scripts/bg | head -n1 )
+bindsym $mod+Ctrl+2 exec --no-startup-id feh --no-fehbg --bg-fill $( cat ~/projects/scripts/bg | tr " " "\n" | head -n2 | tail -n1 )
+bindsym $mod+Ctrl+3 exec --no-startup-id feh --no-fehbg --bg-fill $( cat ~/projects/scripts/bg | tr " " "\n" | head -n3 | tail -n1 )
+bindsym $mod+Ctrl+4 exec --no-startup-id feh --no-fehbg --bg-fill $( cat ~/projects/scripts/bg | tr " " "\n" | head -n4 | tail -n1 )
+bindsym $mod+Ctrl+5 exec --no-startup-id feh --no-fehbg --bg-fill $( cat ~/projects/scripts/bg | tr " " "\n" | head -n5 | tail -n1 )
+bindsym $mod+Ctrl+6 exec --no-startup-id feh --no-fehbg --bg-fill $( cat ~/projects/scripts/bg | tr " " "\n" | head -n6 | tail -n1 )
+bindsym $mod+Ctrl+7 exec --no-startup-id feh --no-fehbg --bg-fill $( cat ~/projects/scripts/bg | tr " " "\n" | head -n7 | tail -n1 )
+bindsym $mod+Ctrl+8 exec --no-startup-id feh --no-fehbg --bg-fill $( cat ~/projects/scripts/bg | tr " " "\n" | head -n8 | tail -n1 )
+
+set $ws0 "0"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+bindsym $mod+grave workspace $ws0
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+
+bindsym $mod+Shift+grave move container to workspace $ws0
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym $mod+Left resize shrink width 40 px or 40 ppt
+        bindsym $mod+Down resize grow height 40 px or 40 ppt
+        bindsym $mod+Up resize shrink height 40 px or 40 ppt
+        bindsym $mod+Right resize grow width 40 px or 40 ppt
+        
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+set $bl     #61afef
+set $lg     #8b92ef
+set $dr     #282c34
+set $urg-bg #e06c75
+
+# state                 border          background          text    indicator
+client.focused          $lg             $lg                 $dr   #00ff00
+client.unfocused        $dr             $dr                 $lg   #00ff00
+client.focused_inactive $dr             $dr                 $lg   #00ff00
+client.urgent           $urg-bg         $urg-bg             $dr   #00ff00
+
+bar {
+    # mode dock|hide|invisible
+    mode hide
+    # hidden_state hide|show
+    # modifier <modifier>|none
+
+    # status_command i3status -c $HOME/.config/i3/i3status.conf
+    status_command i3blocks -c $HOME/dev/config/i3/i3blocks.conf
+    colors {
+        background $dr
+        separator #757575
+        #                   border  background  text
+        focused_workspace   $bl     $bl         $dr
+        inactive_workspace  $dr     $dr         $lg
+        urgent_workspace    $urg-bg $urg-bg     $dr
+    }
+}
+
+# shutdown / restart / suspend
+set $i3lockwall i3lock -i $HOME/img/char/hu-tao-sama-1920.png -t
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
+
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $i3lockwall, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $i3lockwall && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $i3lockwall && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym BackSpace mode "default"
+}
+
+
+
+# misc
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="vlc"] floating enable
+for_window [instance=vlc] sticky enable
+# workspace_auto_back_and_forth yes
+
+# borders
+default_border none
+hide_edge_borders both
+
+# keyboard     delay repeat
+exec xset r rate 160 50
+
+# Touchpad
+set $tcpad "ASUE1301:00 04F3:3128 Touchpad"
+exec xinput set-prop $tcpad "libinput Tapping Enabled" 1
+exec xinput set-prop $tcpad "libinput Natural Scrolling Enabled" 1
+exec xinput set-prop $tcpad "libinput Scrolling Pixel Distance" 100
+exec xinput set-prop $tcpad "libinput Accel Profile Enabled" 0, 1, 0
+
+# Sensitivity
+set $speed 2
+exec xinput set-prop $tcpad "Coordinate Transformation Matrix" $speed 0 0 0 $speed 0 0 0 1
+
+# focus_on_window_activation none
+# no_focus [class="feh"] 
+
+# exec feh --no-startup-id --no-fehbg --bg-fill ~/img/hu-tao-sama.png
+exec --no-startup-id xcompmgr -n
+exec --no-startup-id i3-msg "workspace 1, exec --no-startup-id alacritty"
+exec --no-startup-id ~/.config/session/autosuspend.sh
+
+# Configure 5px of space between windows and to the screen edges.
+# gaps inner 3px
+# gaps inner all set 20
+# gaps outer current plus 5
+# gaps horizontal current plus 40
+# gaps outer current toggle 60
+
+# workspace 2 gaps outer 12px
+
+# Configure an additional 5px of extra space to the screen edges,
+# for a total gap of 10px to the screen edges, and 5px between windows.
+# gaps outer 5px
+
+# Overwrite gaps to 0, I need all the space I can get on workspace 3.
+# workspace 3 gaps inner 0
+# workspace 3 gaps outer 0
+
+# Only enable outer gaps when there is exactly one window or split container on the workspace.
+# smart_gaps inverse_outer

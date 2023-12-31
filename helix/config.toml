@@ -1,0 +1,17 @@
+theme = "mytheme"
+
+[editor]
+shell	= ["zsh","-c"]
+line-number = "relative"
+# preview-completion-insert = true
+color-modes	= true
+idle-timeout = 0
+
+[editor.lsp]
+display-messages = true
+# auto-save = false
+
+[keys.normal]
+# ":oof" = ":wa"
+
+
