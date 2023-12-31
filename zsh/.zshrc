@@ -37,7 +37,7 @@ alias nd="npm run dev"
 alias ndev="npm run dev"
 alias ndw="npm run dev -w"
 alias n="npm run"
-# alias br="bun run"
+alias br="bun run"
 alias btest="bun test"
 alias cr="cargo r"
 
