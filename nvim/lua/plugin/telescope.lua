@@ -1,27 +1,36 @@
-local builtin = require 'telescope.builtin'
+local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
-local m = vim.keymap.set
+local set = vim.keymap.set
 local desc = function(d) return { desc = d } end
 
 pcall(require('telescope').load_extension, 'fzf')
 
-require("telescope").setup{
-  defaults = {
-    mappings = {
-      i = { ["<esc>"] = actions.close },
+require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = { ["<esc>"] = actions.close },
+        },
     },
-  },
-  pickers = {
-		-- find_files = {
-		-- 	find_command = { "rg", "--files", "--hidden", "--glob", "!**/{.git,node_modules}/*" },
-		-- },
-	},
-}
+    pickers = {
+        find_files = {
+        	find_command = { "rg", "--files", "--hidden", "--glob", "!**/{.git,node_modules}/*" },
+        },
+    },
+})
 
-m('n', '<tab>', builtin.buffers,            desc("Telescope: buffer"))
-m('n', '<leader><tab>', builtin.find_files, desc("Telescope: all file"))
-m('n', '<leader>td', builtin.diagnostics,    desc("Telescope: diagnostic"))
-m('n', '<leader>tp', builtin.builtin,       desc("Telescope: all builtin"))
-m('n', '<leader>ts', function()
+-- builtin.quickfix
+-- builtin.commands
+-- builtin.git_status
+
+-- Layout Mode
+-- themes.get_dropdow
+-- theme = cursor
+-- themes.get_ivy
+
+set('n', '<tab>', builtin.buffers,            desc("Telescope: buffer"))
+set('n', '<leader><tab>', builtin.find_files, desc("Telescope: all file"))
+set('n', '<leader>fd', builtin.diagnostics,   desc("Telescope: diagnostic"))
+set('n', '<leader>fp', builtin.builtin,       desc("Telescope: all builtin"))
+set('n', '<leader>fs', function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end,  desc("Telescope: grep string"))

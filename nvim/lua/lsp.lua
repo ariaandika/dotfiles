@@ -41,9 +41,26 @@ require('mason-lspconfig').setup({
             lsp[server].setup({ capabilities = default_capabilities, })
         end,
         -- language specific settings
-        lua_ls = lua_ls
+        lua_ls = lua_ls,
 
         -- ["rust_analyzer"] = function() end
+        ["intelephense"] = function()
+            lsp.intelephense.setup{
+                cmd = { 'intelephense', '--stdio' };
+                filetypes = { 'php' };
+                root_dir = function(fname)
+                    return vim.loop.cwd()
+                end;
+                settings = {
+                    intelephense = {
+                        files = {
+                            maxSize = 5000000;
+                        };
+                    }
+                },
+                capabilities = default_capabilities
+            }
+        end
     }
 })
 

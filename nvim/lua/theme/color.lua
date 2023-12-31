@@ -9,15 +9,8 @@ function ColorSetup(style)
     }
   }
   -- comment
-
   require'onedark'.load()
 end
 
 ColorSetup()
-
--- doesnt work
--- require("monokai-pro").setup({
---   transparent_background = true,
---   filter = "pro",
--- })
 

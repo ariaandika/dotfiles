@@ -11,6 +11,7 @@ return require'packer'.startup(function(use)
 
     use 'folke/neodev.nvim'
     use 'mbbill/undotree'
+    -- use 'LunarWatcher/auto-pairs'
 
     -- mason
     use {
@@ -65,23 +66,17 @@ return require'packer'.startup(function(use)
       event = "InsertEnter",
     }
 
-
     -- colors
     use 'navarasu/onedark.nvim'
-    -- use "folke/tokyonight.nvim"
-    -- use 'tanvirtin/monokai.nvim'
-    -- use {
-    --   "loctvl842/monokai-pro.nvim",
-    --   config = function()
-    --     require("monokai-pro").setup()
-    --   end
-    -- }
-
     use 'numToStr/Comment.nvim'
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+
+
+    -- Problem with remapped <CR>
+    -- use 'jiangmiao/auto-pairs'
 
 end)
 --

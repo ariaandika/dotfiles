@@ -1,6 +1,7 @@
 
-require 'nvim-treesitter.configs'.setup {
-    ensure_installed = { "javascript", "typescript", "lua", "rust", "svelte" }, 
+---@diagnostic disable-next-line: missing-fields
+require 'nvim-treesitter.configs'.setup({
+    ensure_installed = { "javascript", "typescript", "lua", "rust" },
     sync_install = false,
     auto_install = true,
     highlight = {
@@ -9,5 +10,5 @@ require 'nvim-treesitter.configs'.setup {
     },
     indent = {
         enable = false,
-    }
-}
+    },
+})

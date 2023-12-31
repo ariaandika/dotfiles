@@ -32,12 +32,12 @@ vim.keymap.set('v', '<Tab>', ">gv")
 vim.keymap.set('v', '<S-Tab>', "<gv")
 
 vim.keymap.set('i', '<M-d>', "<Esc><Esc>")
-vim.keymap.set('n', '<leader>f', 'gg=G<C-o>')
+-- vim.keymap.set('n', '<leader>f', 'gg=G<C-o>')
 vim.keymap.set('i', '<M-Enter>', "<Esc><Esc>o")
 
 vim.keymap.set('n', 'Q', "<nop>")
 vim.keymap.set('n', 'zq', "@q")
-vim.keymap.set('n', '<CR>', "o<Esc>")
+-- vim.keymap.set('n', '<CR>', "o<Esc>")
 
 vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 vim.keymap.set('v', '<leader>s', '"ry:%s/\\(<C-r>r\\)/<C-r>r/gI<Left><Left><Left>')
