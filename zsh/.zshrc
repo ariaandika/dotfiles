@@ -39,7 +39,8 @@ alias diff="diff --color=auto"
 
 alias tmux="tmux -f ~/dev/config/tmux/tmux.conf"
 alias zl="zellij -c ~/dev/config/zellij/config_sweet.kdl"
-alias vim="XDG_CONFIG_HOME=~/dev/config nvim"
+# alias vim="XDG_CONFIG_HOME=~/dev/config nvim"
+alias vim="nvim -u ~/dev/config/nvim/init.lua"
 alias code=~/app/VSCode-linux-x64/bin/code
 alias hx="helix -c ~/dev/config/helix/config.toml"
 alias sw=swayimg
