@@ -1,3 +1,0 @@
-.zprofile
-  startx -> .xinitrc
-    i3 -> .config/i3/config

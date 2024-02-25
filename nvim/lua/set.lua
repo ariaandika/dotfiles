@@ -7,6 +7,16 @@ vim.cmd[[command W write]]
 vim.cmd[[command Wa wall]]
 vim.cmd[[command WA wall]]
 vim.cmd[[command Wq wq]]
+vim.cmd[[command Q q]]
+
+vim.api.nvim_exec([[
+  autocmd InsertEnter * inoremap { {}<Esc>i
+  autocmd InsertEnter * inoremap ( ()<Esc>i
+  autocmd InsertEnter * inoremap [ []<Esc>i
+  autocmd InsertEnter * inoremap " ""<Esc>i
+  autocmd InsertEnter * inoremap ' ''<Esc>i
+  autocmd InsertEnter * inoremap < <><Esc>i
+]], false)
 
 opt.guicursor = ""
 opt.nu = true
@@ -36,4 +46,5 @@ opt.updatetime = 50
 opt.colorcolumn = "120"
 opt.ignorecase = true
 opt.smartcase = true
+
 

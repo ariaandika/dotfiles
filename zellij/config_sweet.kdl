@@ -38,7 +38,7 @@ keybinds clear-defaults=true {
 
     bind "n" { NewPane; SwitchToMode "Normal"; }
     bind "q" { ToggleFloatingPanes; SwitchToMode "Normal"; }
-
+    bind ";" { WriteChars "^E\n"; }
   }
   resize {
     bind "Esc" { SwitchToMode "Normal"; }
@@ -59,10 +59,10 @@ keybinds clear-defaults=true {
     bind "Alt 4" { GoToTab 4; SwitchToMode "Normal"; }
     bind "Alt 5" { GoToTab 5; SwitchToMode "Normal"; }
 
-    bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
-    bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
-    bind "Alt j" "Alt Down" { MoveFocus "Down"; }
-    bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+    bind "Alt h" "Alt Left" { MoveFocus "Left"; }
+    bind "Alt l" "Alt Right" { MoveFocus "Right"; }
+    // bind "Alt j" "Alt Down" { MoveFocus "Down"; }
+    // bind "Alt k" "Alt Up" { MoveFocus "Up"; }
   }
 
   shared_except "locked" {

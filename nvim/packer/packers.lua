@@ -36,28 +36,9 @@ return require'packer'.startup(function(use)
         }
     }
 
-    -- lsp-zero
-    -- didnt work
-    -- use {
-    --   'VonHeikemen/lsp-zero.nvim',
-    --   requires = {
-    --     {'neovim/nvim-lspconfig'},
-    --     {'williamboman/mason.nvim'},
-    --     {'williamboman/mason-lspconfig.nvim'},
-    --
-    --     -- completion
-    --     {'hrsh7th/nvim-cmp'},
-    --     {'hrsh7th/cmp-path'},
-    --     {'hrsh7th/cmp-cmdline'},
-    --     {'hrsh7th/cmp-nvim-lsp'},
-    --     {'hrsh7th/cmp-nvim-lua'},
-    --     {'saadparwaiz1/cmp_luasnip'},
-    --
-    --     -- snippet
-    --     {'L3MON4D3/LuaSnip'},
-    --     {'rafamadriz/friendly-snippets'},
-    --   }
-    -- }
+    -- COC
+    -- no documentation for configuration
+    -- use { 'neoclide/coc.nvim', branch = "release" }
 
     -- Copilot
     use {
@@ -68,6 +49,8 @@ return require'packer'.startup(function(use)
 
     -- colors
     use 'navarasu/onedark.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
+
     use 'numToStr/Comment.nvim'
     use {
       'nvim-lualine/lualine.nvim',

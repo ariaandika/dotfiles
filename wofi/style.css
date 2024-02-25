@@ -1,4 +1,4 @@
-#window {
+window {
   background-color: rgba(43, 48, 59, 1);
   color: #fff;
   transition: all 2s;
@@ -8,7 +8,8 @@
 #input {
   background-color: rgba(43, 48, 59, 1);
   color: #fff;
-  outline: none;
+  /* outline: none; */
+  outline: 2px solid red;
   border: none;
   border-radius: 6px;
 }

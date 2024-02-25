@@ -1,12 +1,18 @@
 require "basemap"
-require "lsp"
 require "set"
 
-require "theme.color"
+-- require "lsp"
+-- require "theme.color"
+-- require "plugin.telescope"
+-- require "plugin.treesitter"
+-- require "plugin.harpoon"
+-- require "plugin.snippets"
+-- require "plugin.common"
 
-require "plugin.common"
-require "plugin.telescope"
-require "plugin.treesitter"
-require "plugin.harpoon"
 
-require "plugin.snippets"
+-- require "lazy-init"
+
+
+
+require("ariaandika.init")
+require("ariaandika.lsp")

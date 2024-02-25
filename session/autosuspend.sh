@@ -15,7 +15,7 @@ while true; do
     IDLE=$(xprintidle)
     if [[ $(xprintidle) -gt $MAX ]]; then
       echo "$(date) sleeping..." >> /home/deuzo/.local/share/oofed
-      i3lock -i $HOME/img/char/hu-tao-sama-1920.png -t && systemctl suspend
+      # i3lock -i $HOME/img/char/hu-tao-sama-1920.png -t && systemctl suspend
       echo "$(date) wakeup..." >> /tmp/oofed
       continue
     else
@@ -25,17 +25,17 @@ while true; do
     echo "$(date), idle: $IDLE, pid $P" >> /tmp/oofed
   fi
 
-  if [[ $(cat /sys/class/power_supply/BAT0/status) == 'Discharging' && $(cat /sys/class/power_supply/BAT0/capacity) < $MINBATTERY ]]; then
-    notify-send "low battery, sleep in 2 min..."
-    sleep 120
-    if [[ $(cat /sys/class/power_supply/BAT0/status) == 'Discharging' ]]; then
-      echo "$(date) bat: $(cat /sys/class/power_supply/BAT0/capacity), sleeping low battery..." >> /home/deuzo/.local/share/oofed
-      i3lock -i $HOME/img/char/hu-tao-sama-1920.png -t && systemctl suspend
-      exit
-    else
-      echo "$(date) not sleeping, plugged in" >> /tmp/oofed
-    fi
-  fi
+  # if [[ $(cat /sys/class/power_supply/BAT0/status) == 'Discharging' && $(cat /sys/class/power_supply/BAT0/capacity) < $MINBATTERY ]]; then
+  #   notify-send "low battery, sleep in 2 min..."
+  #   sleep 120
+  #   if [[ $(cat /sys/class/power_supply/BAT0/status) == 'Discharging' ]]; then
+  #     echo "$(date) bat: $(cat /sys/class/power_supply/BAT0/capacity), sleeping low battery..." >> /home/deuzo/.local/share/oofed
+  #     # i3lock -i $HOME/img/char/hu-tao-sama-1920.png -t && systemctl suspend
+  #     exit
+  #   else
+  #     echo "$(date) not sleeping, plugged in" >> /tmp/oofed
+  #   fi
+  # fi
 
   # sleep 10 minute
   sleep 600

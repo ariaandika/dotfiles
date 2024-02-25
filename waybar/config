@@ -1,6 +1,6 @@
 {
     "layer": "top", // window layer
-    "position": "bottom", // (top|bottom|left|right)
+    "position": "top", // (top|bottom|left|right)
     // "height": 1,
     // "width": 800,
     "spacing": 4, // Gaps between modules (4px)
@@ -16,6 +16,7 @@
 
     // "modules-left": [],
     // "modules-center": [],
+    // "modules-right": [],
 
     "modules-right": [
       "hyprland/workspaces",

@@ -9,7 +9,6 @@ set('n','<leader>u',vim.cmd.UndotreeToggle, "UndoTree: open window")
 set('n','<leader>gs', vim.cmd.Git,          "Git: open window")
 
 
-
 -- Comment
 ---@diagnostic disable-next-line: missing-fields
 require'Comment'.setup({
@@ -34,3 +33,16 @@ set('v', '<C-_>', 'gc', "Comment: toggle")
 function Cope()
     require("copilot").setup({})
 end
+
+
+-- mini autopair
+---@diagnostic disable-next-line: undefined-field
+vim.api.nvim_exec([[
+  autocmd InsertEnter * inoremap { {}<Esc>i
+  autocmd InsertEnter * inoremap ( ()<Esc>i
+  autocmd InsertEnter * inoremap [ []<Esc>i
+  autocmd InsertEnter * inoremap " ""<Esc>i
+  autocmd InsertEnter * inoremap ' ''<Esc>i
+  autocmd InsertEnter * inoremap < <><Esc>i
+]], false)
+

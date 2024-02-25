@@ -1,4 +1,6 @@
 setopt prompt_subst
+setopt autocd
+
 nice=''
 precmd() {
   nice=`git branch 2>/dev/null`
@@ -9,14 +11,21 @@ precmd() {
   fi
 }
 PROMPT='%(?.%F{15}󰈸.%F{196}%?)%f %B%F{215}%~%F{45}%b $nice%f'
+EDITOR='nvim'
 
 echo
 echo Perfect
 echo
 
-PA="/usr/local/go/bin:/home/deuzo/.cargo/bin:/home/deuzo/.bun/bin"
+PA="/usr/local/go/bin"
+PA="$PA:/home/deuzo/.cargo/bin"
+PA="$PA:/home/deuzo/.bun/bin"
 PA="$PA:/home/deuzo/.local/share/nvim/mason/bin"
-export PATH="$PA:/home/deuzo/dev/scripts:/home/deuzo/app:/home/deuzo/dev/bin:$PATH"
+PA="$PA:/home/deuzo/.surrealdb/surreal"
+PA="$PA:/home/deuzo/dev/scripts"
+PA="$PA:/home/deuzo/app"
+PA="$PA:/home/deuzo/dev/bin"
+export PATH="$PA:$PATH"
 
 fpath+=~/dev/scripts/completions
 
@@ -25,8 +34,10 @@ alias clea=clear
 alias cler=clear
 
 alias l="ls -A --color --group-directories-first"
-alias rm="mv $@ /tmp/"
+alias rm="echo yeet"
+alias diff="diff --color=auto"
 
+alias tmux="tmux -f ~/dev/config/tmux/tmux.conf"
 alias zl="zellij -c ~/dev/config/zellij/config_sweet.kdl"
 alias vim="XDG_CONFIG_HOME=~/dev/config nvim"
 alias code=~/app/VSCode-linux-x64/bin/code
@@ -75,23 +86,4 @@ bindkey "\e\`" sysctlfn
 # completions
 [ -s "/home/deuzo/.bun/_bun" ] && source "/home/deuzo/.bun/_bun"
 
-if [[ $(which zellij) && -z $(ps -e | grep zellij) ]]; then
-  zellij -c /home/deuzo/dev/config/zellij/config_sweet.kdl
-fi
-
-# Autocomplete
-
-# autoload -U compinit
-# compinit
-# setopt APPEND_HISTORY
-# setopt SHARE_HISTORY
-# HISTFILE=$HOME/.zhistory
-# SAVEHIST=1000
-# HISTSIZE=999
-# setopt HIST_EXPIRE_DUPS_FIRST
-# setopt EXTENDED_HISTORY
-
-# bindkey '\e[A' history-beginning-search-backward
-# bindkey '\e[B' history-beginning-search-forward
-
-
+. ~/dev/config/zsh/zsh-autosuggestions.zsh
