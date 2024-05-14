@@ -1,0 +1,8 @@
+[Unit]
+Description=Personal Service Script
+
+[Service]
+ExecStart=sh /home/deuzo/dev/config/session/wayboot.sh
+
+[Install]
+WantedBy=default.target

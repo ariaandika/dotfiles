@@ -1,0 +1,36 @@
+#!/bin/bash
+
+CRINGE=$(date)
+RESUME_FILE="/tmp/should_sleep.resume"
+LOCK_FILE="/tmp/should_sleep.lock"
+LOG_FILE="/tmp/should_sleep.log"
+
+rm -f "$RESUME_FILE"
+
+if [[ -f "$LOCK_FILE" ]]; then
+    echo "[$(date)] Lock detected, exiting" > "$LOG_FILE";
+    exit;
+fi
+
+echo "$CRINGE" > "$LOCK_FILE";
+while true; do
+    # run command playerctl -a status | rg Playing then check is it success or not
+    if [[ `playerctl -a status | rg Playing` ]]; then
+        echo "[$(date)] Not sleep, video player detected" > "$LOG_FILE";
+        sleep 60;
+        if [[ $(cat "$LOCK_FILE") != "$CRINGE" ]]; then
+            echo "[$(date)] Lock taken over, exiting" > "$LOG_FILE";
+            break;
+        elif [[ -f "$RESUME_FILE" ]]; then
+            rm "$LOCK_FILE";
+            echo "[$(date)] Resumed, exiting" #oof;
+            break;
+        fi
+        continue;
+    fi
+    echo "[$(date)] Dies of cringe" > "$LOG_FILE";
+    rm "$LOCK_FILE";
+    systemctl suspend;
+    break;
+done
+
