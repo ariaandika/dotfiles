@@ -73,7 +73,7 @@ $ reboot
 ## Post Installation
 
 $ sudo pacman -S polkit hyprland alacritty noto-fonts zsh tmux
-$ sudo pacman -S firefox fzf neovim pipewire pipewire-pulse wireplumber obsidian \
+$ sudo pacman -S openssh firefox fzf neovim pipewire pipewire-pulse wireplumber obsidian \
     bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar xsv unzip vlc \
     hyprpaper playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
     xdg-desktop portal-hyprland
@@ -84,6 +84,14 @@ $ curl -fsSL https://bun.sh/install | bash
 $ curl -fsSL https://bun.sh/install | bash
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+## Postgres
+$ sudo su postgres
+$ initdb --locale=C.UTF-8 --encoding=UTF8 -D '/var/lib/postgres/data'
+
+## Libs
+# Required when running tauri
+# webkit2gtk wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips
+$ sudo pacman -S libsoup webkit2gtk wget libvips libappindicator-gtk3 appmenu-gtk-module
 
 ## TODO
 # Update waybar and other in hyprland config

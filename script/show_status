@@ -1,4 +1,10 @@
 #!/bin/bash
+MUT=`pactl get-sink-mute $(pactl get-default-sink) | sed 's/Mute: //' -`
 BAT=`cat /sys/class/power_supply/BAT0/capacity`
 VOL=`pactl get-sink-volume $(pactl get-default-sink) | awk '{print $5}' | head -n 1`
-echo "$VOL $BAT%"
+if [[ "$MUT" = "yes" ]]; then
+    echo "MUTED $BAT%"
+else
+    echo "$VOL $BAT%"
+fi
+
