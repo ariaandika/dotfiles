@@ -47,8 +47,12 @@ alias n="npm run"
 
 alias :w="echo DeezNutz"
 alias :W="echo DeezNutz"
+alias :wa="echo DeezNutz"
+alias :Wa="echo DeezNutz"
+alias :WA="echo DeezNutz"
 alias :q=exit
 alias :Q=exit
+alias p="ping google.com"
 alias claer=clear
 alias clea=clear
 alias cler=clear
