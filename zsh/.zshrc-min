@@ -73,6 +73,12 @@ bindkey "^[[F" end-of-line
 look () { . ~/dev/scripts/project-list; zle reset-prompt }
 zle -N look
 bindkey "\e\t" look
+tmux_up () { tmux select-pane -U }
+zle -N tmux_up
+bindkey "^[[1;3A" tmux_up
+tmux_down () { tmux select-pane -D }
+zle -N tmux_down
+bindkey "^[[1;3B" tmux_down
 
 if [[ $(which tmux) && -z $(ps -e | rg tmux) ]]; then
   tmux
