@@ -3,6 +3,8 @@ setopt autocd
 set -o noclobber
 
 PROMPT='%(?.%F{15}󰈸.%F{196}%?)%f %B%F{215}%~%F{45}%b $nice%f'
+MANROFFOPT="-c"
+MANPAGER="sh -c 'col -bx | bat -l man -p'"
 EDITOR='nvim'
 
 echo
