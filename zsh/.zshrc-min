@@ -11,8 +11,10 @@ echo
 echo Perfect
 echo
 
-PA="/usr/local/go/bin"
+PA=""
 PA="$PA:/home/deuzo/.cargo/bin"
+PA="$PA:/home/deuzo/go/bin"
+PA="$PA:/usr/local/go/bin"
 PA="$PA:/home/deuzo/.bun/bin"
 PA="$PA:/home/deuzo/.local/share/nvim/mason/bin"
 PA="$PA:/home/deuzo/.surrealdb"
@@ -56,6 +58,7 @@ alias :q=exit
 alias :Q=exit
 alias p="ping google.com"
 alias claer=clear
+alias clae=clear
 alias clea=clear
 alias cler=clear
 
