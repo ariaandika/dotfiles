@@ -1,5 +1,6 @@
 # import = ["<string>"]
-# live_config_reload = true | false
+live_config_reload = false
+ipc_socket = false
 
 [window]
 decorations = "None"
