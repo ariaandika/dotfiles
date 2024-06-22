@@ -3,10 +3,11 @@ MUT=`pactl get-sink-mute $(pactl get-default-sink) | sed 's/Mute: //' -`
 BAT=`cat /sys/class/power_supply/BAT0/capacity`
 VOL=`pactl get-sink-volume $(pactl get-default-sink) | awk '{print $5}' | head -n 1`
 DAT=`date '+%R %A %e %B %Y'`
+
 if [[ "$MUT" = "yes" ]]; then
-    printf "MUTED "
+    LAWFMWAF="MUTED"
 else
-    printf "$VOL "
+    LAWFMWAF="$VOL"
 fi
 
-printf "$BAT% $DAT"
+echo $LAWFMWAF $BAT% $DAT
