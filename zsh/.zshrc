@@ -6,6 +6,7 @@ PROMPT='%(?.%F{15}󰈸.%F{196}%?)%f %B%F{215}%~%F{45}%b $nice%f'
 MANROFFOPT="-c"
 MANPAGER="sh -c 'col -bx | bat -l man -p'"
 EDITOR='nvim'
+CONFY="/home/deuzo/dev/config"
 
 echo
 echo Perfect
@@ -32,9 +33,9 @@ alias diff="diff --color=auto"
 alias cat=bat
 alias iwc=iwctl
 
-alias alacritty="alacritty --config-file ~/dev/config/alacritty/alacritty.toml"
-alias tmux="tmux -f ~/dev/config/tmux/tmux.conf"
-alias vim="nvim -u ~/dev/config/nvim/init.lua"
+alias alacritty="alacritty --config-file $CONFY/alacritty/alacritty.toml"
+alias tmux="tmux -f $CONFY/tmux/tmux.conf"
+alias vim="nvim -u $CONFY/nvim/init.lua"
 alias chelp="bat --language=help"
 alias sw=swayimg
 
@@ -72,7 +73,7 @@ bindkey "\e[4~" end-of-line
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
-look () { . ~/dev/scripts/project-list; zle reset-prompt }
+look () { . "$CONFY/script/project-list"; zle reset-prompt }
 zle -N look
 bindkey "\e\t" look
 tmux_up () { tmux select-pane -U }
@@ -90,7 +91,3 @@ fi
 # will emulate typing
 # bindkey -s "\ew" "some word to type"
 
-# completions
-# [ -s "/home/deuzo/.bun/_bun" ] && source "/home/deuzo/.bun/_bun"
-
-# . ~/dev/config/zsh/zsh-autosuggestions.zsh

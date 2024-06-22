@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+# s=$(find ~/projects/banter ~/projects ~/ ~/.config ~/projects/personal ~/projects/docs ~/projects/side ~/projects/scripts ~/dev/banter ~/dev -mindepth 1 -maxdepth 1)
+s=$(find ~/dev/rust-workspace ~/dev/banter ~/dev/config ~/dev -mindepth 1 -maxdepth 1)
+b=''
+ds=$(echo "$s" | fzf --layout=reverse)
+
+if [[ -z "$ds" ]]; then
+
+elif [[ -d "$ds" ]]; then
+  cd "$ds"
+elif [[ -f "$ds" ]]; then
+  b=$(basename "$ds")
+  ds=$(dirname "$ds")
+  cd "$ds"
+  vim $b
+fi
+
