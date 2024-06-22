@@ -1,8 +1,10 @@
 #!/bin/bash
+
 MUT=`pactl get-sink-mute $(pactl get-default-sink) | sed 's/Mute: //' -`
 BAT=`cat /sys/class/power_supply/BAT0/capacity`
 VOL=`pactl get-sink-volume $(pactl get-default-sink) | awk '{print $5}' | head -n 1`
-DAT=`date '+%R %A %e %B %Y'`
+DAY=`date '+%A'`
+MON=`date '+%B'`
 
 if [[ "$MUT" = "yes" ]]; then
     LAWFMWAF="MUTED"
@@ -10,4 +12,6 @@ else
     LAWFMWAF="$VOL"
 fi
 
-echo $LAWFMWAF $BAT% $DAT
+T="/home/deuzo/dev/config/script/date-translate"
+
+echo $LAWFMWAF $BAT% $(date '+%R') $($T $DAY) $(date '+%e') $($T $MON) $(date '+%Y')
