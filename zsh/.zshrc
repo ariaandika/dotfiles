@@ -2,24 +2,19 @@ setopt prompt_subst
 setopt autocd
 set -o noclobber
 
-nice=''
-precmd() {
-  nice=`git branch 2>/dev/null`
-  if [ $? -eq 0 ]; then
-    nice="`echo $nice | awk '/\*/ {print $2}'` 󰘬 "
-  else
-    nice=""
-  fi
-}
 PROMPT='%(?.%F{15}󰈸.%F{196}%?)%f %B%F{215}%~%F{45}%b $nice%f'
+MANROFFOPT="-c"
+MANPAGER="sh -c 'col -bx | bat -l man -p'"
 EDITOR='nvim'
 
 echo
 echo Perfect
 echo
 
-PA="/usr/local/go/bin"
+PA=""
 PA="$PA:/home/deuzo/.cargo/bin"
+PA="$PA:/home/deuzo/go/bin"
+PA="$PA:/usr/local/go/bin"
 PA="$PA:/home/deuzo/.bun/bin"
 PA="$PA:/home/deuzo/.local/share/nvim/mason/bin"
 PA="$PA:/home/deuzo/.surrealdb"
@@ -29,26 +24,18 @@ PA="$PA:/home/deuzo/dev/bin"
 export PATH="$PA:$PATH"
 export RUSTC_WRAPPER="sccache"
 
-fpath+=~/dev/scripts/completions
-
 alias cp='cp -i'
 alias mv='mv -i'
 alias l="ls -A --color --group-directories-first"
 alias rm="printf yeet"
 alias diff="diff --color=auto"
-alias claer=clear
-alias clea=clear
-alias cler=clear
-
-
-alias iwc=iwctl
 alias cat=bat
-alias car="LESS=\"-XF\" bat"
+alias iwc=iwctl
+
+alias alacritty="alacritty --config-file ~/dev/config/alacritty/alacritty.toml"
 alias tmux="tmux -f ~/dev/config/tmux/tmux.conf"
-alias zl="zellij -c ~/dev/config/zellij/config_sweet.kdl"
 alias vim="nvim -u ~/dev/config/nvim/init.lua"
-alias code=~/app/VSCode-linux-x64/bin/code
-alias hx="helix -c ~/dev/config/helix/config.toml"
+alias chelp="bat --language=help"
 alias sw=swayimg
 
 alias br="bun run"
@@ -59,8 +46,18 @@ alias ndev="npm run dev"
 alias ndw="npm run dev -w"
 alias n="npm run"
 
+alias :w="echo DeezNutz"
+alias :W="echo DeezNutz"
+alias :wa="echo DeezNutz"
+alias :Wa="echo DeezNutz"
+alias :WA="echo DeezNutz"
 alias :q=exit
 alias :Q=exit
+alias p="ping google.com"
+alias claer=clear
+alias clae=clear
+alias clea=clear
+alias cler=clear
 
 bindkey "\e[5~" beginning-of-history
 bindkey "\e[6~" end-of-history
@@ -75,23 +72,25 @@ bindkey "\e[4~" end-of-line
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
-run () { i3-msg "exec $1" }
 look () { . ~/dev/scripts/project-list; zle reset-prompt }
-sysctlfn () { sysctl; zle reset-prompt }
-bunrun () { echo;bun run src/index.ts; zle reset-prompt }
-
 zle -N look
-zle -N sysctlfn
-zle -N bunrun
-
-bindkey "\e;" bunrun
 bindkey "\e\t" look
-bindkey "\e\`" sysctlfn
+tmux_up () { tmux select-pane -U }
+zle -N tmux_up
+bindkey "^[[1;3A" tmux_up
+tmux_down () { tmux select-pane -D }
+zle -N tmux_down
+bindkey "^[[1;3B" tmux_down
+
+if [[ $(which tmux) && -z $(ps -e | rg tmux) ]]; then
+  tmux
+  tmux \; splitw -h
+fi
+
 # will emulate typing
 # bindkey -s "\ew" "some word to type"
 
 # completions
-[ -s "/home/deuzo/.bun/_bun" ] && source "/home/deuzo/.bun/_bun"
+# [ -s "/home/deuzo/.bun/_bun" ] && source "/home/deuzo/.bun/_bun"
 
-. ~/dev/config/zsh/zsh-autosuggestions.zsh
-. ~/dev/config/zsh/compatibility.zsh
+# . ~/dev/config/zsh/zsh-autosuggestions.zsh

@@ -84,6 +84,9 @@ $ curl -fsSL https://bun.sh/install | bash
 $ curl -fsSL https://bun.sh/install | bash
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+## Debugging
+$ sudo pacman -S sqlitebrowser
+
 ## tealinux
 $ sudo pacman -S parted dmidecode
 
