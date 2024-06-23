@@ -1,12 +1,16 @@
+# zsh tab autocomplete, eg: rustup, cargo
+# fpath+=~/.zfunc
+
 setopt prompt_subst
 setopt autocd
 set -o noclobber
 
 PROMPT='%(?.%F{15}󰈸.%F{196}%?)%f %B%F{215}%~%F{45}%b $nice%f'
-MANROFFOPT="-c"
-MANPAGER="sh -c 'col -bx | bat -l man -p'"
-EDITOR='nvim'
-CONFY="/home/deuzo/dev/config"
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export EDITOR='nvim'
+export CONFY="/home/deuzo/dev/config"
+export RUSTC_WRAPPER="sccache"
 
 echo
 echo Perfect
@@ -23,7 +27,6 @@ PA="$PA:/home/deuzo/dev/scripts"
 PA="$PA:/home/deuzo/app"
 PA="$PA:/home/deuzo/dev/bin"
 export PATH="$PA:$PATH"
-export RUSTC_WRAPPER="sccache"
 
 alias cp='cp -i'
 alias mv='mv -i'
@@ -59,6 +62,9 @@ alias claer=clear
 alias clae=clear
 alias clea=clear
 alias cler=clear
+alias help=help_view
+alias h=help_view
+alias :h=help_view
 
 bindkey "\e[5~" beginning-of-history
 bindkey "\e[6~" end-of-history
@@ -73,6 +79,7 @@ bindkey "\e[4~" end-of-line
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
+help_view () { $1 --help ${@:2} | chelp }
 look () { . "$CONFY/script/project-list"; zle reset-prompt }
 zle -N look
 bindkey "\e\t" look
@@ -82,6 +89,7 @@ bindkey "^[[1;3A" tmux_up
 tmux_down () { tmux select-pane -D }
 zle -N tmux_down
 bindkey "^[[1;3B" tmux_down
+
 
 if [[ $(which tmux) && -z $(ps -e | rg tmux) ]]; then
   tmux
