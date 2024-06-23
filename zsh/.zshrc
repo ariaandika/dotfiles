@@ -8,9 +8,11 @@ set -o noclobber
 PROMPT='%(?.%F{15}󰈸.%F{196}%?)%f %B%F{215}%~%F{45}%b $nice%f'
 export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export EDITOR='nvim'
 export CONFY="/home/deuzo/dev/config"
 export RUSTC_WRAPPER="sccache"
+
+# DONT EXPORT, IT BREAK STUFF, LIKE ALT + BACKSPACE
+EDITOR='nvim'
 
 echo
 echo Perfect
