@@ -1,1 +1,5 @@
 stash
+/stash
+stash/
+stash/**
+**/stash/**
