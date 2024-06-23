@@ -1,17 +1,50 @@
 #!/bin/bash
 
-MUT=`pactl get-sink-mute $(pactl get-default-sink) | sed 's/Mute: //' -`
-BAT=`cat /sys/class/power_supply/BAT0/capacity`
-VOL=`pactl get-sink-volume $(pactl get-default-sink) | awk '{print $5}' | head -n 1`
-DAY=`date '+%A'`
-MON=`date '+%B'`
+trs() {
+    case "$1" in
+        "Sun") WOT="Minggu";;
+        "Mon") WOT="Senin";;
+        "Tue") WOT="Selasa";;
+        "Wed") WOT="Rabu";;
+        "Thu") WOT="Kamis";;
+        "Fri") WOT="Jumat";;
+        "Sat") WOT="Sabtu";;
+        "Jan") WOT="Januari";;
+        "Feb") WOT="Februari";;
+        "Mar") WOT="Maret";;
+        "Apr") WOT="April";;
+        "May") WOT="Mei";;
+        "Jun") WOT="Juni";;
+        "Jul") WOT="Juli";;
+        "Aug") WOT="Agustus";;
+        "Sep") WOT="September";;
+        "Oct") WOT="Oktober";;
+        "Nov") WOT="November";;
+        "Dec") WOT="Desember";;
+        *);;
+    esac
+}
 
-if [[ "$MUT" = "yes" ]]; then
-    LAWFMWAF="MUTED"
-else
-    LAWFMWAF="$VOL"
+BAT=`cat /sys/class/power_supply/BAT0/capacity`
+VOL=`pactl get-sink-volume @DEFAULT_SINK@`
+YTB=`playerctl metadata xesam:title`
+WIF=`iwctl station wlan0 show | rg Connected -m 1 | sed "s/\s\+\w\+\s\+\w\+\s\+//" | xargs`
+
+DAT=`date '+%R%a%e%b%Y'`
+TIM=${DAT:0:5}
+trs ${DAT:5:3}
+DAY=$WOT
+trs ${DAT:10:3}
+MON=$WOT
+DAT="$DAY, ${DAT:8:2} $MON ${DAT:(-4):4}"
+
+
+if [[ -n $YTB ]]; then
+    YTB=" ${YTB:0:40} |"
 fi
 
-T="/home/deuzo/dev/config/script/date-translate"
+if [[ -n $WIF ]]; then
+    WIF="󰢾 ${WIF:0:12} |"
+fi
 
-echo $LAWFMWAF $BAT% $(date '+%R') $($T $DAY) $(date '+%e') $($T $MON) $(date '+%Y')
+echo "$YTB $WIF 󰃭 $DAT |  $TIM | ${VOL:29:3} $BAT%"
