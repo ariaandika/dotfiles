@@ -74,7 +74,7 @@ $ reboot
 
 $ sudo pacman -S polkit hyprland alacritty noto-fonts zsh tmux
 $ sudo pacman -S openssh firefox fzf neovim pipewire pipewire-pulse wireplumber obsidian \
-    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar xsv unzip vlc \
+    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar xsv zip unzip vlc \
     obs-studio hyprpaper playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
     xdg-desktop portal-hyprland
 $ chsh /usr/bin/zsh

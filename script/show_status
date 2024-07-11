@@ -36,7 +36,7 @@ trs ${DAT:5:3}
 DAY=$WOT
 trs ${DAT:10:3}
 MON=$WOT
-DAT="$DAY, ${DAT:8:2} $MON ${DAT:(-4):4}"
+DAT="$DAY,${DAT:8:2} $MON ${DAT:(-4):4}"
 
 
 if [[ -n $YTB ]]; then
