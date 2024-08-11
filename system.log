@@ -74,7 +74,7 @@ $ reboot
 
 $ sudo pacman -S polkit hyprland alacritty noto-fonts zsh tmux
 $ sudo pacman -S openssh firefox fzf neovim pipewire pipewire-pulse wireplumber obsidian \
-    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar xsv zip unzip vlc \
+    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar zip unzip vlc \
     obs-studio hyprpaper playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
     xdg-desktop portal-hyprland
 $ chsh /usr/bin/zsh
@@ -84,15 +84,16 @@ $ curl -fsSL https://bun.sh/install | bash
 $ curl -fsSL https://bun.sh/install | bash
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-## Debugging
-$ sudo pacman -S sqlitebrowser
-
-## tealinux
-$ sudo pacman -S parted dmidecode
-
 ## Postgres
 $ sudo su postgres
 $ initdb --locale=C.UTF-8 --encoding=UTF8 -D '/var/lib/postgres/data'
+
+## Additional
+$ sudo pacman -S sqlitebrowser pinta xsv rsync qbittorrent prettier lshw inotify-tools \
+  libmtp cloudflared
+
+## tealinux
+$ sudo pacman -S parted dmidecode
 
 ## Libs
 # Required when running tauri
@@ -100,6 +101,5 @@ $ initdb --locale=C.UTF-8 --encoding=UTF8 -D '/var/lib/postgres/data'
 $ sudo pacman -S libsoup webkit2gtk wget libvips libappindicator-gtk3 appmenu-gtk-module
 
 ## TODO
-# Update waybar and other in hyprland config
 # copy fonts
 # copy neovim plugin

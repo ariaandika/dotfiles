@@ -14,9 +14,13 @@ export RUSTC_WRAPPER="sccache"
 # DONT EXPORT, IT BREAK STUFF, LIKE ALT + BACKSPACE
 EDITOR='nvim'
 
+alias latest="command cat ~/LATEST"
+alias setlatest="echo $1 >! ~/LATEST"
+
 echo
 echo Perfect
 echo
+echo Latest: `latest`
 
 PA=""
 PA="$PA:/home/deuzo/.cargo/bin"
@@ -44,6 +48,7 @@ alias vim="nvim -u $CONFY/nvim/init.lua"
 alias chelp="bat --language=help"
 alias sw=swayimg
 
+alias gs="git status -s"
 alias br="bun run"
 alias btest="bun test"
 alias cr="cargo"
