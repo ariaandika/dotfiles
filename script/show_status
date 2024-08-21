@@ -38,13 +38,8 @@ trs ${DAT:10:3}
 MON=$WOT
 DAT="$DAY,${DAT:8:2} $MON ${DAT:(-4):4}"
 
-
-if [[ -n $YTB ]]; then
-    YTB=" ${YTB:0:40} |"
-fi
-
 if [[ -n $WIF ]]; then
     WIF="󰢾 ${WIF:0:12} |"
 fi
 
-echo "$YTB $WIF 󰃭 $DAT | ${VOL:29:3} $BAT% |  $TIM"
+echo "$WIF 󰃭 $DAT | ${VOL:29:3} $BAT% |  $TIM"
