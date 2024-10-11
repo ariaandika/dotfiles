@@ -72,25 +72,30 @@ $ reboot
 
 ## Post Installation
 
-$ sudo pacman -S polkit hyprland alacritty noto-fonts zsh tmux
-$ sudo pacman -S openssh firefox fzf neovim pipewire pipewire-pulse wireplumber obsidian \
-    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar zip unzip vlc \
-    obs-studio hyprpaper playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
-    xdg-desktop portal-hyprland
+$ sudo pacman -S polkit hyprland firefox alacritty noto-fonts zsh tmux fzf neovim
 $ chsh /usr/bin/zsh
 $ echo '. ~/dev/config/zsh/.zprofile' > ~/.zprofile
-$ echo '. ~/dev/config/zsh/.zshrc-min' > ~/.zshrc
-$ curl -fsSL https://bun.sh/install | bash
+$ echo '. ~/dev/config/zsh/.zshrc' > ~/.zshrc
 $ curl -fsSL https://bun.sh/install | bash
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+$ sudo pacman -S openssh pipewire pipewire-pulse wireplumber obsidian \
+    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar zip unzip vlc \
+    obs-studio hyprpaper playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
+    xdg-desktop-portal-hyprland ydotool
 
 ## Postgres
 $ sudo su postgres
 $ initdb --locale=C.UTF-8 --encoding=UTF8 -D '/var/lib/postgres/data'
 
 ## Additional
-$ sudo pacman -S sqlitebrowser pinta xsv rsync qbittorrent prettier lshw inotify-tools \
+$ sudo pacman -S sqlitebrowser pinta xsv rsync qbittorrent prettier lshw \
   libmtp cloudflared
+
+## Format usb as exFat
+$ sudo pacman -S exfatprogs
+
+## Elixir
+$ sudo pacman -S elixir inotify-tools
 
 ## tealinux
 $ sudo pacman -S parted dmidecode
@@ -103,3 +108,4 @@ $ sudo pacman -S libsoup webkit2gtk wget libvips libappindicator-gtk3 appmenu-gt
 ## TODO
 # copy fonts
 # copy neovim plugin
+# when different user for config/session/startup.service

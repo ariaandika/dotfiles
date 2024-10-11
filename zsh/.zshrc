@@ -8,13 +8,13 @@ set -o noclobber
 PROMPT='%(?.%F{15}󰈸.%F{196}%?)%f %B%F{215}%~%F{45}%b $nice%f'
 export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export CONFY="/home/deuzo/dev/config"
+export CONFY="$HOME/dev/config"
 export RUSTC_WRAPPER="sccache"
 
 # DONT EXPORT, IT BREAK STUFF, LIKE ALT + BACKSPACE
 EDITOR='nvim'
 
-alias latest="command cat ~/LATEST"
+alias latest="if [ -s $HOME/LATEST ]; then command cat ~/LATEST; fi"
 alias setlatest="echo $1 >! ~/LATEST"
 
 echo
@@ -23,15 +23,14 @@ echo
 echo Latest: `latest`
 
 PA=""
-PA="$PA:/home/deuzo/.cargo/bin"
-PA="$PA:/home/deuzo/go/bin"
+PA="$PA:$HOME/.cargo/bin"
+PA="$PA:$HOME/.bun/bin"
+PA="$PA:$HOME/dev/scripts"
+PA="$PA:$HOME/app"
+PA="$PA:$HOME/.surrealdb"
+PA="$PA:$HOME/.local/share/nvim/mason/bin"
+PA="$PA:$HOME/go/bin"
 PA="$PA:/usr/local/go/bin"
-PA="$PA:/home/deuzo/.bun/bin"
-PA="$PA:/home/deuzo/.local/share/nvim/mason/bin"
-PA="$PA:/home/deuzo/.surrealdb"
-PA="$PA:/home/deuzo/dev/scripts"
-PA="$PA:/home/deuzo/app"
-PA="$PA:/home/deuzo/dev/bin"
 export PATH="$PA:$PATH"
 
 alias cp='cp -i'
@@ -58,10 +57,10 @@ alias ndw="npm run dev -w"
 alias n="npm run"
 
 alias :w="echo DeezNutz"
-alias :W="echo DeezNutz"
-alias :wa="echo DeezNutz"
-alias :Wa="echo DeezNutz"
-alias :WA="echo DeezNutz"
+alias :W=:w
+alias :wa=:w
+alias :Wa=:w
+alias :WA=:w
 alias :q=exit
 alias :Q=exit
 alias p="ping google.com"
@@ -98,7 +97,7 @@ zle -N tmux_down
 bindkey "^[[1;3B" tmux_down
 
 
-if [[ $(which tmux) && -z $(ps -e | rg tmux) ]]; then
+if [[ $(which tmux) && -z $(ps -e | grep tmux) ]]; then
   tmux
   tmux \; splitw -h
 fi
