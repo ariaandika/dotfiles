@@ -22,13 +22,11 @@ echo Perfect
 echo
 echo Latest: `latest`
 
-PA=""
-PA="$PA:$HOME/.cargo/bin"
+PA="$HOME/.cargo/bin"
 PA="$PA:$HOME/.bun/bin"
-PA="$PA:$HOME/dev/scripts"
+PA="$PA:$HOME/dev/config/script"
 PA="$PA:$HOME/app"
 PA="$PA:$HOME/.surrealdb"
-PA="$PA:$HOME/.local/share/nvim/mason/bin"
 PA="$PA:$HOME/go/bin"
 PA="$PA:/usr/local/go/bin"
 export PATH="$PA:$PATH"
@@ -39,23 +37,7 @@ alias l="ls -A --color --group-directories-first"
 alias rm="printf yeet"
 alias diff="diff --color=auto"
 alias cat=bat
-alias iwc=iwctl
-
-alias alacritty="alacritty --config-file $CONFY/alacritty/alacritty.toml"
-alias tmux="tmux -f $CONFY/tmux/tmux.conf"
-alias vim="nvim -u $CONFY/nvim/init.lua"
-alias chelp="bat --language=help"
-alias sw=swayimg
-
-alias gs="git status -s"
-alias br="bun run"
-alias btest="bun test"
-alias cr="cargo"
-alias nd="npm run dev"
-alias ndev="npm run dev"
-alias ndw="npm run dev -w"
-alias n="npm run"
-
+alias p="ping 8.8.8.8"
 alias :w="echo DeezNutz"
 alias :W=:w
 alias :wa=:w
@@ -63,14 +45,21 @@ alias :Wa=:w
 alias :WA=:w
 alias :q=exit
 alias :Q=exit
-alias p="ping google.com"
 alias claer=clear
 alias clae=clear
 alias clea=clear
 alias cler=clear
-alias help=help_view
-alias h=help_view
-alias :h=help_view
+
+alias alacritty="alacritty --config-file $CONFY/alacritty/alacritty.toml"
+alias br="bun run"
+alias chelp="bat --language=help"
+alias cr="cargo"
+alias gs="git status -s"
+alias iwc=iwctl
+alias ndev="npm run dev"
+alias sw=swayimg
+alias tmux="tmux -f $CONFY/tmux/tmux.conf"
+alias vim="nvim -u $CONFY/nvim/init.lua"
 
 bindkey "\e[5~" beginning-of-history
 bindkey "\e[6~" end-of-history
@@ -86,16 +75,21 @@ bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
 help_view () { $1 --help ${@:2} | chelp }
+alias help=help_view
+alias h=help_view
+alias :h=help_view
+
 look () { . "$CONFY/script/project-list"; zle reset-prompt }
 zle -N look
 bindkey "\e\t" look
+
 tmux_up () { tmux select-pane -U }
 zle -N tmux_up
 bindkey "^[[1;3A" tmux_up
+
 tmux_down () { tmux select-pane -D }
 zle -N tmux_down
 bindkey "^[[1;3B" tmux_down
-
 
 if [[ $(which tmux) && -z $(ps -e | grep tmux) ]]; then
   tmux

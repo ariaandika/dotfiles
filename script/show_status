@@ -27,7 +27,6 @@ trs() {
 
 BAT=`cat /sys/class/power_supply/BAT0/capacity`
 VOL=`pactl get-sink-volume @DEFAULT_SINK@`
-YTB=`playerctl metadata xesam:title`
 WIF=`iwctl station wlan0 show | rg Connected -m 1 | sed "s/\s\+\w\+\s\+\w\+\s\+//" | xargs`
 
 DAT=`date '+%R%a%e%b%Y'`

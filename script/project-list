@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
-s=$(find ~/dev/works ~/dev/ruster ~/dev/lab ~/dev/ui ~/dev/stash ~/dev/config ~/dev -mindepth 1 -maxdepth 1)
-b=''
+s=$(find ~/dev/lab ~/dev/lib-test ~/dev/works ~/dev/ruster ~/dev/ui ~/dev/stash ~/dev/config ~/dev -mindepth 1 -maxdepth 1)
 ds=$(echo "$s" | fzf --layout=reverse)
 
 if [[ -z "$ds" ]]; then
