@@ -1,0 +1,6 @@
+#!/bin/bash
+
+case $1 in
+  "scan") iwctl station wlan0 scan;;
+  *) iwctl station wlan0 connect $1;;
+esac

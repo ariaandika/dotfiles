@@ -1,6 +1,16 @@
 #!/bin/bash
 
-s=$(find ~/dev/lab ~/dev/lib-test ~/dev/works ~/dev/ruster ~/dev/ui ~/dev/stash ~/dev/config ~/dev -mindepth 1 -maxdepth 1)
+t=""
+t="$t $HOME/dev/lab"
+t="$t $HOME/dev/lib-test"
+t="$t $HOME/android/tauri"
+t="$t $HOME/dev/works"
+t="$t $HOME/dev/live-app"
+t="$t $HOME/dev/stash"
+t="$t $HOME/dev/config"
+t="$t $HOME/dev"
+
+s=$(find $(echo $t) -mindepth 1 -maxdepth 1)
 ds=$(echo "$s" | fzf --layout=reverse)
 
 if [[ -z "$ds" ]]; then
@@ -8,9 +18,7 @@ if [[ -z "$ds" ]]; then
 elif [[ -d "$ds" ]]; then
   cd "$ds"
 elif [[ -f "$ds" ]]; then
-  b=$(basename "$ds")
-  ds=$(dirname "$ds")
-  cd "$ds"
-  vim $b
+  cd $(dirname "$ds")
+  vim $(basename "$ds")
 fi
 

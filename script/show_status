@@ -41,4 +41,4 @@ if [[ -n $WIF ]]; then
     WIF="󰢾 ${WIF:0:12} |"
 fi
 
-echo "$WIF 󰃭 $DAT | ${VOL:29:3} $BAT% |  $TIM"
+echo "$WIF 󰃭 $DAT | ${VOL:28:4} $BAT% |  $TIM"
