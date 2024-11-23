@@ -112,6 +112,16 @@ $ sudo pacman -S cmake
 ## game: dont starve
 $ sudo pacman -S libcurl-gnutls
 
+## davinci resolve
+$ sudo pacman -S glu libxcrypt-compat
+## opencl gpu stuff
+$ git clone https://aur.archlinux.org/opencl-amd.git
+$ sudo pacman -S numactl
+$ makepkg
+$ sudo pacman -U opencl-amd-1:6.2.4-1-x86_64.pkg.tar.zst
+## to run it
+$  LD_PRELOAD="/usr/lib/libgio-2.0.so /usr/lib/libgmodule-2.0.so /usr/lib/libglib-2.0.so" /opt/resolve/bin/resolve
+
 ## TODO
 # copy fonts
 # copy neovim plugin
