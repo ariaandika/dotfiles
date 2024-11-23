@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# execute directly by user
+
+CMD="input:touchpad:disable_while_typing"
+
+if [[ $(hyprctl getoption $CMD | grep 1) ]] then
+  hyprctl keyword $CMD false
+  echo "Lock cursor on type disabled"
+else
+  hyprctl keyword $CMD true
+  echo "Lock cursor on type enabled"
+fi
+
