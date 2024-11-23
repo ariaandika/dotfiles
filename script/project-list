@@ -3,6 +3,7 @@
 t=""
 t="$t $HOME/dev/lab"
 t="$t $HOME/dev/lib-test"
+t="$t $HOME/dev/ui"
 t="$t $HOME/android/tauri"
 t="$t $HOME/dev/works"
 t="$t $HOME/dev/live-app"

@@ -81,7 +81,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ sudo pacman -S openssh pipewire pipewire-pulse wireplumber obsidian \
     bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar zip unzip vlc \
     obs-studio hyprpaper playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
-    xdg-desktop-portal-hyprland ydotool
+    xdg-desktop-portal-hyprland ydotool pipewire-alsa
 
 ## Postgres
 $ sudo su postgres
@@ -103,7 +103,14 @@ $ sudo pacman -S parted dmidecode
 ## Libs
 # Required when running tauri
 # webkit2gtk wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips
-$ sudo pacman -S libsoup webkit2gtk wget libvips libappindicator-gtk3 appmenu-gtk-module
+$ sudo pacman -S libsoup webkit2gtk webkit2gtk-4.1 wget libvips \
+    libappindicator-gtk3 appmenu-gtk-module
+
+## if you love pain
+$ sudo pacman -S cmake
+
+## game: dont starve
+$ sudo pacman -S libcurl-gnutls
 
 ## TODO
 # copy fonts
