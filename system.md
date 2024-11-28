@@ -74,14 +74,17 @@ $ reboot
 
 $ sudo pacman -S polkit hyprland firefox alacritty noto-fonts zsh tmux fzf neovim
 $ chsh /usr/bin/zsh
-$ echo '. ~/dev/config/zsh/.zprofile' > ~/.zprofile
-$ echo '. ~/dev/config/zsh/.zshrc' > ~/.zshrc
+$ echo '. ~/dev/config/zsh/zprofile' > ~/.zprofile
+$ echo '. ~/dev/config/zsh/zshrc' > ~/.zshrc
 $ curl -fsSL https://bun.sh/install | bash
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ sudo pacman -S openssh pipewire pipewire-pulse wireplumber obsidian \
     bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar zip unzip vlc \
-    obs-studio hyprpaper playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
+    obs-studio playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
     xdg-desktop-portal-hyprland ydotool pipewire-alsa
+
+## Hypr ecosystem
+$ sudo pacman -S hypridle hyprlock hyprpaper
 
 ## Postgres
 $ sudo su postgres
@@ -89,7 +92,7 @@ $ initdb --locale=C.UTF-8 --encoding=UTF8 -D '/var/lib/postgres/data'
 
 ## Additional
 $ sudo pacman -S sqlitebrowser pinta xsv rsync qbittorrent prettier lshw \
-  libmtp cloudflared
+  libmtp cloudflared net-tools parallel
 
 ## Format usb as exFat
 $ sudo pacman -S exfatprogs
@@ -102,7 +105,6 @@ $ sudo pacman -S parted dmidecode
 
 ## Libs
 # Required when running tauri
-# webkit2gtk wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips
 $ sudo pacman -S libsoup webkit2gtk webkit2gtk-4.1 wget libvips \
     libappindicator-gtk3 appmenu-gtk-module
 
