@@ -1,8 +1,12 @@
 
 if which Hyprland &> /dev/null; then
-  if [[ -z $(ps -A | grep Hyprland) ]]; then
-    echo Hyprland Detected
-    exec Hyprland -c $HOME/dev/config/hypr/hyprland.conf
+  if [[ -f "/tmp/.no-hypr" ]]; then
+
+  else
+    if [[ -z $(ps -A | grep Hyprland) ]]; then
+      echo Hyprland Detected
+      exec Hyprland -c $HOME/dev/config/hypr/hyprland.conf
+    fi
   fi
 elif which startx &> /dev/null; then
   if [[ -z $(ps -A | grep startx) ]]; then
