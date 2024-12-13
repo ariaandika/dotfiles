@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+if [[ $a == https://* ]]
+then
+  BAR="${*/ /\+}"
+  xdg-open "https://google.com/search?query=$BAR"
+else
+  xdg-open "$*"
+fi
+
+hyprctl dispatch workspace 3
