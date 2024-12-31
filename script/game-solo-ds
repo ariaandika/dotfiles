@@ -1,0 +1,2 @@
+#!/bin/bash
+gamemoderun gamescope -W 1920 -H 1080 -r 60 -s 2.5 -- ~/downloads/games/start.sh
