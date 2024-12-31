@@ -174,6 +174,16 @@ sudo pacman -S cmake
 sudo pacman -S libcurl-gnutls
 ```
 
+## esp-idf
+[souce](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html)
+```bash
+sudo pacman -S --needed gcc git make flex bison gperf python cmake ninja ccache dfu-util libusb
+mkdir -p ~/iot && cd ~/iot
+git clone -b v5.3.2 --recursive https://github.com/espressif/esp-idf.git
+cd ./esp-idf && ./install.sh esp32
+. $HOME/iot/esp-idf/export.sh
+```
+
 ## TODO
 ```bash
 # copy fonts
