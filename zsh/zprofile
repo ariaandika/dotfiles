@@ -1,12 +1,16 @@
+if [[ -f "/tmp/.no-display" ]]; then
+  exit
+fi
 
 if which Hyprland &> /dev/null; then
-  if [[ -f "/tmp/.no-hypr" ]]; then
-
-  else
-    if [[ -z $(ps -A | grep Hyprland) ]]; then
-      echo Hyprland Detected
-      exec Hyprland -c $HOME/dev/config/hypr/hyprland.conf
-    fi
+  if [[ -z $(ps -A | grep Hyprland) ]]; then
+    echo Hyprland Detected
+    exec Hyprland -c $HOME/dev/config/hypr/hyprland.conf
+  fi
+elif which sway &> /dev/null; then
+  if [[ -z $(ps -A | grep sway) ]]; then
+    echo sway Detected
+    exec sway --config $HOME/dev/config/sway/config
   fi
 elif which startx &> /dev/null; then
   if [[ -z $(ps -A | grep startx) ]]; then
