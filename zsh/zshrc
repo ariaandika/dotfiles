@@ -61,6 +61,10 @@ alias sw=swayimg
 alias tmux="tmux -f $CONFY/tmux/tmux.conf"
 alias vim="nvim -u $CONFY/nvim/init.lua"
 
+alias dispatch-android=". $HOME/android/dispatch"
+alias dispatch-esp=". $HOME/iot/esp-idf/export.sh"
+alias dispatch-pio=". $HOME/iot/dispatch"
+
 bindkey "\e[5~" beginning-of-history
 bindkey "\e[6~" end-of-history
 bindkey "\e[3~" delete-char
