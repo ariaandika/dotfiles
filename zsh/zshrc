@@ -14,7 +14,7 @@ export RUSTC_WRAPPER="sccache"
 # DONT EXPORT, IT BREAK STUFF, LIKE ALT + BACKSPACE
 EDITOR='nvim'
 
-alias latest="if [ -s $HOME/LATEST ]; then command cat ~/LATEST; fi"
+alias latest="if [ -s $HOME/LATEST ]; then head --line 1 ~/LATEST; fi"
 alias setlatest="echo $1 >! ~/LATEST"
 
 echo

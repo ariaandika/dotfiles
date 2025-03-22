@@ -164,7 +164,7 @@ sudo pacman -S libsoup webkit2gtk webkit2gtk-4.1 wget libvips \
     libappindicator-gtk3 appmenu-gtk-module
 ```
 
-## if you love pain
+## C build tools
 ```bash
 sudo pacman -S cmake
 ```
