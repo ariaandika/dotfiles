@@ -55,6 +55,10 @@ usermod -aG wheel,storage,power deuzo
 visudo
 # Uncomment to allow members of group wheel to execute ...
 
+vim /etc/systemd/logind.conf
+# HandlePowerKey=ignore
+# HandlePowerKeyLongPress=suspend
+
 cp /mnt/session/startup.service /etc/systemd/system/startup.service
 systemctl enable startup
 systemctl enable dhcpcd
