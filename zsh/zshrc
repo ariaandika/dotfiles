@@ -60,6 +60,7 @@ alias ndev="npm run dev"
 alias sw=swayimg
 alias tmux="tmux -f $CONFY/tmux/tmux.conf"
 alias vim="nvim -u $CONFY/nvim/init.lua"
+alias vi="LSP=0 vim"
 
 alias dispatch-android=". $HOME/android/dispatch"
 alias dispatch-esp=". $HOME/iot/esp-idf/export.sh"
