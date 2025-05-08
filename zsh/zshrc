@@ -51,6 +51,8 @@ alias clea=clear
 alias cler=clear
 
 alias alacritty="alacritty --config-file $CONFY/alacritty/alacritty.toml"
+alias pgon="systemctl start postgresql"
+alias pgoff="systemctl stop postgresql"
 alias br="bun run"
 alias chelp="bat --language=help"
 alias cr="cargo"
