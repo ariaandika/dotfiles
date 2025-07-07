@@ -1,11 +1,18 @@
 #!/bin/zsh
 
 BACKLIGHT="/sys/class/backlight/amdgpu_bl1/brightness"
+MAX="/sys/class/backlight/amdgpu_bl1/max_brightness"
 
-if [ "$1" = "up" ]; then
-  echo $(( $( cat $BACKLIGHT ) + 3 )) > $BACKLIGHT
+SCALE="$(( `cat $MAX` * 1/100 ))"
+
+if [ "$1" = "up" ];
+then
+  echo $(( $( cat $BACKLIGHT ) + $SCALE )) > $BACKLIGHT
 elif [ "$1" = "down" ];
 then
-  echo $(( $( cat $BACKLIGHT ) - 3 )) > $BACKLIGHT
+  echo $(( $( cat $BACKLIGHT ) - $SCALE )) > $BACKLIGHT
+elif [ "$1" = "set" ];
+then
+  echo "$2" > $BACKLIGHT
 fi
 
