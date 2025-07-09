@@ -96,6 +96,11 @@ sudo pacman -S openssh pipewire pipewire-pulse wireplumber obsidian \
     xdg-desktop-portal-hyprland ydotool pipewire-alsa
 ```
 
+## VLC Choke on h264 not supported
+```bash
+sudo pacman -S vlc-plugin-gstreamer vlc-plugin-ffmpeg
+```
+
 ## Hypr ecosystem
 ```bash
 sudo pacman -S hypridle hyprlock hyprpaper
