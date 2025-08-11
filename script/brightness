@@ -14,5 +14,10 @@ then
 elif [ "$1" = "set" ];
 then
   echo "$2" > $BACKLIGHT
+elif [ "$1" = "get" ];
+then
+  cat $BACKLIGHT
+else
+  echo "Usage: brightness [up | down | get | set \$num]"
 fi
 
