@@ -91,7 +91,7 @@ echo '. ~/dev/config/zsh/zshrc' > ~/.zshrc
 curl -fsSL https://bun.sh/install | bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo pacman -S openssh pipewire pipewire-pulse wireplumber obsidian \
-    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar zip unzip vlc \
+    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar zip unzip 7zip vlc \
     obs-studio playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
     xdg-desktop-portal-hyprland ydotool pipewire-alsa
 ```
@@ -104,6 +104,11 @@ sudo pacman -S vlc-plugin-gstreamer vlc-plugin-ffmpeg
 ## Hypr ecosystem
 ```bash
 sudo pacman -S hypridle hyprlock hyprpaper
+```
+
+## Alternative Player
+```bash
+sudo pacman -S mplayer
 ```
 
 ## Postgres
