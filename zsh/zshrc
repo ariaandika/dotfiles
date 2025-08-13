@@ -9,6 +9,7 @@ PROMPT='%(?.%F{15}󰈸.%F{196}%?)%f %B%F{215}%~%F{45}%b $nice%f'
 export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export CONFY="$HOME/dev/config"
+export CONF="$HOME/dev/config"
 export RUSTC_WRAPPER="sccache"
 
 # DONT EXPORT, IT BREAK STUFF, LIKE ALT + BACKSPACE
@@ -22,7 +23,8 @@ echo Perfect
 echo
 echo Latest: `latest`
 
-PA="$HOME/.cargo/bin"
+PA="$HOME"
+PA="$PA:$HOME/.cargo/bin"
 PA="$PA:$HOME/.bun/bin"
 PA="$PA:$HOME/dev/config/script"
 PA="$PA:$HOME/app"
