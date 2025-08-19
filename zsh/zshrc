@@ -52,7 +52,7 @@ alias clae=clear
 alias clea=clear
 alias cler=clear
 
-alias alacritty="alacritty --config-file $CONFY/alacritty/alacritty.toml"
+alias alacritty="alacritty --config-file $CONF/alacritty/alacritty.toml"
 alias pgon="sudo systemctl start postgresql"
 alias pgoff="sudo systemctl stop postgresql"
 alias pgsql="sudo su postgres"
@@ -63,9 +63,11 @@ alias gs="git status -s"
 alias iwc=iwctl
 alias ndev="npm run dev"
 alias sw=swayimg
-alias tmux="tmux -f $CONFY/tmux/tmux.conf"
-alias vim="nvim -u $CONFY/nvim/init.lua"
+alias tmux="tmux -f $CONF/tmux/tmux.conf"
+alias vim="nvim -u $CONF/nvim/init.lua"
 alias vi="LSP=0 vim"
+alias mpv="mpv --config-dir=$CONF/mpv --shuffle"
+alias unpv="mpv --config-dir=$CONF/mpv"
 
 alias dispatch-android=". $HOME/android/dispatch"
 alias dispatch-esp=". $HOME/iot/esp-idf/export.sh"
