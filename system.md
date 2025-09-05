@@ -117,9 +117,9 @@ sudo pacman -S vlc-plugin-gstreamer vlc-plugin-ffmpeg
 sudo pacman -S hypridle hyprlock hyprpaper
 ```
 
-## Alternative Player
+## Alternative Media Player
 ```bash
-sudo pacman -S mplayer
+sudo pacman -S mpv
 ```
 
 ## Postgres
