@@ -5,31 +5,17 @@ MAX="/sys/class/backlight/amdgpu_bl1/max_brightness"
 
 SCALE="$(( `cat $MAX` * 1/100 ))"
 
-# lower than this, brightness will be a flashbang
-MIN=236
-
 if [ "$1" = "up" ];
 then
   echo $(( $( cat $BACKLIGHT ) + $SCALE )) > $BACKLIGHT
 
 elif [ "$1" = "down" ];
 then
-  VAL="$(( $( cat $BACKLIGHT ) - $SCALE ))"
-  if [ "$VAL" -lt "$MIN" ];
-  then
-    echo "$MIN" > $BACKLIGHT
-  else
-    echo $VAL > $BACKLIGHT
-  fi
+  echo "$(( $( cat $BACKLIGHT ) - $SCALE ))" > $BACKLIGHT
 
 elif [ "$1" = "set" ];
 then
-  if [ "$2" -lt "$MIN" ];
-  then
-    echo "$MIN" > $BACKLIGHT
-  else
-    echo "$2" > $BACKLIGHT
-  fi
+  echo "$2" > $BACKLIGHT
 
 elif [ "$1" = "get" ];
 then

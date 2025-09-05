@@ -82,7 +82,18 @@ umount -lR /mnt
 reboot
 ```
 
-## Post Installation
+# Post Installation
+
+## AMD backlight choke
+source: Archwiki Backlight, Troubleshooting(6.12)
+```bash
+sudo vim /etc/default/grub
+# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet amdgpu.dcdebugmask=0x40000"
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+
+## Core Packages
 ```bash
 sudo pacman -S polkit hyprland firefox alacritty noto-fonts zsh tmux fzf neovim
 chsh /usr/bin/zsh
