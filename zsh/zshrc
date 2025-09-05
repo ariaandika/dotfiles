@@ -67,7 +67,7 @@ alias tmux="tmux -f $CONF/tmux/tmux.conf"
 alias vim="nvim -u $CONF/nvim/init.lua"
 alias vi="LSP=0 vim"
 alias mpv="mpv --config-dir=$CONF/mpv --shuffle"
-alias unpv="mpv --config-dir=$CONF/mpv"
+alias unpv="command mpv --config-dir=$CONF/mpv"
 
 alias dispatch-android=". $HOME/android/dispatch"
 alias dispatch-esp=". $HOME/iot/esp-idf/export.sh"
