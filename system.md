@@ -154,6 +154,11 @@ sudo pacman -S steam
 # chose proper providers, though idk which is proper one
 ```
 
+## Slay the Spire
+```bash
+sudo pacman -S xorg-xrandr
+```
+
 ## Gamemode
 ```bash
 sudo pacman -S lib32-gamemode gamemode
