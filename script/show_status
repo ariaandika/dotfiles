@@ -25,6 +25,7 @@ trs() {
     esac
 }
 
+CHR=`cat /sys/class/power_supply/BAT0/status`
 BAT=`cat /sys/class/power_supply/BAT0/capacity`
 VOL=`pactl get-sink-volume @DEFAULT_SINK@`
 WIF=`iwctl station wlan0 show | rg Connected -m 1 | sed "s/\s\+\w\+\s\+\w\+\s\+//" | xargs`
@@ -39,6 +40,12 @@ DAT="$DAY,${DAT:8:2} $MON ${DAT:(-4):4}"
 
 if [[ -n $WIF ]]; then
     WIF="󰢾 ${WIF:0:12} |"
+fi
+
+if [[ $BAT -lt 15 ]]; then
+  if [ $CHR = 'Discharging' ]; then
+    hyprctl notify 3 4000 0 'Disconjunction'
+  fi
 fi
 
 echo "$WIF 󰃭 $DAT | ${VOL:28:4} $BAT% |  $TIM"
