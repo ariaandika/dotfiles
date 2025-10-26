@@ -11,7 +11,7 @@ t="$t $HOME/dev/stash"
 t="$t $HOME/dev/verbatim"
 t="$t $HOME/dev"
 t="$t $HOME/iot"
-t="$t $HOME/android/tauri"
+t="$t $HOME/games"
 
 s=$(find $(echo $t) -mindepth 1 -maxdepth 1)
 ds=$(echo "$s" | fzf --layout=reverse)
