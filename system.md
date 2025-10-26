@@ -174,8 +174,10 @@ gamemoderun %command%
 
 ## Gamescope
 ```bash
-sudo pacman -S gamescope
+# https://www.reddit.com/r/linux_gaming/comments/15s4yz0/gamescope_fails_to_start_with_vulkan_error/
+sudo pacman -S gamescope vulkan-radeon
 gamescope -- %command%
+gamescope -W 1280 -H 720 -r 60 -- wine Hades.exe
 ```
 
 ## detecting external input
