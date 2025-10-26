@@ -75,7 +75,15 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # TODO: create conf for grub background and custom entry, pin: /etc/default/grub
 ```
 
-## Cleanup
+## Entrypoint
+```bash
+sudo pacman -S zsh
+chsh /usr/bin/zsh
+echo '. ~/dev/config/zsh/zprofile' > ~/.zprofile
+echo '. ~/dev/config/zsh/zshrc' > ~/.zshrc
+```
+
+## Showtime
 ```bash
 exit
 umount -lR /mnt
@@ -84,42 +92,32 @@ reboot
 
 # Post Installation
 
-## AMD backlight choke
-source: Archwiki Backlight, Troubleshooting(6.12)
+## Core but Utils
 ```bash
-sudo vim /etc/default/grub
-# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet amdgpu.dcdebugmask=0x40000"
-grub-mkconfig -o /boot/grub/grub.cfg
+sudo pacman -S firefox alacritty neovim \
+    openssh bat jq ripgrep man man-db tmux fzf \
+    unrar zip unzip 7zip noto-fonts wl-clipboard pacman-contrib
 ```
 
-
-## Core Packages
+## Hyprland
 ```bash
-sudo pacman -S polkit hyprland firefox alacritty noto-fonts zsh tmux fzf neovim
-chsh /usr/bin/zsh
-echo '. ~/dev/config/zsh/zprofile' > ~/.zprofile
-echo '. ~/dev/config/zsh/zshrc' > ~/.zshrc
-curl -fsSL https://bun.sh/install | bash
+sudo pacman -S polkit hyprland \
+    hypridle hyprlock hyprpaper xdg-desktop-portal-hyprland
+```
+
+## Multimedia
+```bash
+sudo pacman -S pipewire pipewire-pulse wireplumber pipewire-alsa \
+    grim libvips slurp swappy swayimg \
+    vlc mpv obs-studio playerctl
+```
+
+# Development
+
+```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-sudo pacman -S openssh pipewire pipewire-pulse wireplumber obsidian \
-    bat nodejs github-cli jq ripgrep sccache man mariadb postgresql unrar zip unzip 7zip vlc \
-    obs-studio playerctl grim libvips slurp wl-clipboard swappy swayidle swayimg \
-    xdg-desktop-portal-hyprland ydotool pipewire-alsa
-```
-
-## VLC Choke on h264 not supported
-```bash
-sudo pacman -S vlc-plugin-gstreamer vlc-plugin-ffmpeg
-```
-
-## Hypr ecosystem
-```bash
-sudo pacman -S hypridle hyprlock hyprpaper
-```
-
-## Alternative Media Player
-```bash
-sudo pacman -S mpv
+curl -fsSL https://bun.sh/install | bash
+sudo pacman -S nodejs npm github-cli sccache mariadb postgresql
 ```
 
 ## Postgres
@@ -128,20 +126,31 @@ sudo su postgres
 initdb --locale=C.UTF-8 --encoding=UTF8 -D '/var/lib/postgres/data'
 ```
 
-## Additional
+# Gaming
+
+## Prerequisite
 ```bash
-sudo pacman -S sqlitebrowser pinta xsv rsync qbittorrent prettier lshw \
-    libmtp cloudflared net-tools parallel
+# vulkan-radeon:
+# https://www.reddit.com/r/linux_gaming/comments/15s4yz0/gamescope_fails_to_start_with_vulkan_error/
+sudo pacman -S wine gamescope scanmem gamemode lib32-gamemode vulkan-radeon
 ```
 
-## Format usb as exFat
+## Gamescope
 ```bash
-sudo pacman -S exfatprogs
+gamescope -- %command%
+gamescope -W 1280 -H 720 -r 60 -- wine Hades.exe
 ```
 
-## Elixir
+## Gamemode
 ```bash
-sudo pacman -S elixir inotify-tools
+sudo usermod -aG gamemode
+sudo nvim /etc/security/limits.conf
+# # add line
+# @gamemode      -        nice         10
+# # This will enable user accounts that are members of the gamemode
+# # group to increase (or ‘renice’) processes to a value of 10
+gamemoderun %command%
+# [source](https://github.com/DemonKingSwarn/linux-gaming)
 ```
 
 ## Steam and Multilib
@@ -159,25 +168,40 @@ sudo pacman -S steam
 sudo pacman -S xorg-xrandr
 ```
 
-## Gamemode
+## Dont Starve
 ```bash
-sudo pacman -S lib32-gamemode gamemode
-sudo usermod -aG gamemode
-sudo nvim /etc/security/limits.conf
-# # add line
-# @gamemode      -        nice         10
-# # This will enable user accounts that are members of the gamemode
-# # group to increase (or ‘renice’) processes to a value of 10
-gamemoderun %command%
-# [source](https://github.com/DemonKingSwarn/linux-gaming)
+sudo pacman -S libcurl-gnutls
 ```
 
-## Gamescope
+# Others
+
+## Additional
 ```bash
-# https://www.reddit.com/r/linux_gaming/comments/15s4yz0/gamescope_fails_to_start_with_vulkan_error/
-sudo pacman -S gamescope vulkan-radeon
-gamescope -- %command%
-gamescope -W 1280 -H 720 -r 60 -- wine Hades.exe
+sudo pacman -S sqlitebrowser pinta xsv rsync qbittorrent prettier lshw \
+    libmtp cloudflared net-tools parallel obsidian
+```
+
+## AMD backlight choke
+```bash
+# https://wiki.archlinux.org/title/Backlight#Recent_(2025)_AMD_changes
+sudo vim /etc/default/grub
+# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet amdgpu.dcdebugmask=0x40000"
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+## VLC Choke on h264 not supported
+```bash
+sudo pacman -S vlc-plugin-gstreamer vlc-plugin-ffmpeg
+```
+
+## Format usb as exFat
+```bash
+sudo pacman -S exfatprogs
+```
+
+## Elixir
+```bash
+sudo pacman -S elixir inotify-tools
 ```
 
 ## detecting external input
@@ -190,6 +214,12 @@ sudo pacman -S wev
 sudo pacman -S parted dmidecode
 ```
 
+## tealinux V2
+```bash
+sudo pacman -S lshw rsync fuse2 gcc-libs webkit2gtk-4.1 \
+    libappindicator-gtk3 appmenu-gtk-module
+```
+
 ## Tauri development
 ```bash
 sudo pacman -S libsoup webkit2gtk webkit2gtk-4.1 wget libvips \
@@ -199,11 +229,6 @@ sudo pacman -S libsoup webkit2gtk webkit2gtk-4.1 wget libvips \
 ## C build tools
 ```bash
 sudo pacman -S cmake
-```
-
-## game: dont starve
-```bash
-sudo pacman -S libcurl-gnutls
 ```
 
 ## esp-idf
