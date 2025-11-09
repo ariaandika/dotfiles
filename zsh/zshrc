@@ -11,6 +11,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export CONFY="$HOME/dev/config"
 export CONF="$HOME/dev/config"
 export RUSTC_WRAPPER="sccache"
+export WINEPREFIX="$HOME/games/.wine"
 
 # DONT EXPORT, IT BREAK STUFF, LIKE ALT + BACKSPACE
 EDITOR='nvim'
