@@ -12,6 +12,7 @@ export CONFY="$HOME/dev/config"
 export CONF="$HOME/dev/config"
 export RUSTC_WRAPPER="sccache"
 export WINEPREFIX="$HOME/games/.wine"
+export PROTONPATH="GE-Proton" # for umu launcher
 
 # DONT EXPORT, IT BREAK STUFF, LIKE ALT + BACKSPACE
 EDITOR='nvim'
@@ -103,11 +104,6 @@ bindkey "^[[1;3A" tmux_up
 tmux_down () { tmux select-pane -D }
 zle -N tmux_down
 bindkey "^[[1;3B" tmux_down
-
-if [[ $(which tmux) && -z $(ps -e | grep tmux) ]]; then
-  tmux
-  tmux \; splitw -h
-fi
 
 # will emulate typing
 # bindkey -s "\ew" "some word to type"
