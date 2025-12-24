@@ -25,7 +25,6 @@ echo Perfect
 echo
 echo Latest: `latest`
 
-PA="$HOME"
 PA="$PA:$HOME/.cargo/bin"
 PA="$PA:$HOME/.bun/bin"
 PA="$PA:$HOME/dev/config/script"
