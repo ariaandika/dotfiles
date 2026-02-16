@@ -3,9 +3,9 @@ if [[ -f "$HOME/.no-display" ]]; then
 
 else
   if which Hyprland &> /dev/null; then
-    if [[ -z $(ps -A | grep Hyprland) ]]; then
-      echo Hyprland Detected
-      exec Hyprland -c $HOME/dev/config/hypr/hyprland.conf
+    if [[ -z $(ps -A | grep start-hyprland) ]]; then
+      echo start-hyprland Detected
+      exec start-hyprland -c $HOME/dev/config/hypr/hyprland.conf
     fi
   elif which sway &> /dev/null; then
     if [[ -z $(ps -A | grep sway) ]]; then
