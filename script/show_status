@@ -42,7 +42,7 @@ if [[ -n $WIF ]]; then
     WIF="󰢾 ${WIF:0:12} |"
 fi
 
-if [[ $BAT -lt 15 ]]; then
+if [[ $BAT -lt 20 ]]; then
   if [ $CHR = 'Discharging' ]; then
     hyprctl notify 3 4000 0 'Disconjunction'
   fi
